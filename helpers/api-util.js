@@ -1,7 +1,5 @@
 export async function getAllEvents() {
-  const response = await fetch(
-    "https://react-max-4f878-default-rtdb.firebaseio.com/events.json"
-  );
+  const response = await fetch('https://react-max-4f878-default-rtdb.firebaseio.com/events.json');
   const data = await response.json();
 
   const events = [];
@@ -9,9 +7,10 @@ export async function getAllEvents() {
   for (const key in data) {
     events.push({
       id: key,
-      ...data[key],
+      ...data[key]
     });
   }
+
   return events;
 }
 
@@ -32,9 +31,7 @@ export async function getFilteredEvents(dateFilter) {
 
   let filteredEvents = allEvents.filter((event) => {
     const eventDate = new Date(event.date);
-    return (
-      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
-    );
+    return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
   });
 
   return filteredEvents;
